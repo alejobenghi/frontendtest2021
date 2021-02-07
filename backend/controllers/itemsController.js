@@ -60,6 +60,50 @@ async function getItems(req,res){
     }
 }
 
+async function getItemById(req,res){
+    try {
+        var url = `https://api.mercadolibre.com/items/${req.params.id}/description`
+        request(url, function(error,response,body){
+            var data=JSON.parse(body)
+            var descri = data.plain_text
+            descri = descri.split('\n').join(' ')
+            var url = `https://api.mercadolibre.com/items/${req.params.id}`
+            request(url, function(error,response,body){
+                var data=JSON.parse(body)
+                
+
+            
+                var json = '{"author":{"name":"Alejo","lastname":"Benedetti Ghiglia"},'
+            
+                json +='"item":{'
+                    json += '"id":'+'"'+data.id+'",'
+                    json += '"title":'+'"'+data.title+'",'
+                    json += '"price":{'
+                    json += '"currency":"'+data.currency_id+'",'
+                    json += '"amount":'+data.price+','
+                    json += '"decimals":2'
+                    json +='},'
+                    json +='"picture":"'+data.pictures[0].url+'",'
+                    json +='"condition":"",'
+                    json +='"free_shipping":'+data.shipping.free_shipping+','
+                    json += '"sold_quantity":'+data.sold_quantity+','
+                    json += '"description":"'+ descri+'"'
+                    json +='}'
+            
+                json +='}'
+                res.status(200).send(JSON.parse(json))
+                //res.status(200).send(data)
+
+            })
+        })
+
+        
+        
+    } catch (e) {
+        res.status(500).send({message:e.message})
+    }
+}
+
 module.exports = {
-    getItems
+    getItems, getItemById
 }
