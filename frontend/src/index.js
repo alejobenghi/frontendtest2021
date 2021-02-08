@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import ItemsLayout from './Items/components/ItemsLayout';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ItemsLayout/>
   </React.StrictMode>,
   document.getElementById('root')
 );

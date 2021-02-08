@@ -66,7 +66,7 @@ async function getItemById(req,res){
         request(url, function(error,response,body){
             var data=JSON.parse(body)
             var descri = data.plain_text
-            descri = descri.split('\n').join(' ')
+            descri = descri.replace(/\n/g,' ')
             var url = `https://api.mercadolibre.com/items/${req.params.id}`
             request(url, function(error,response,body){
                 var data=JSON.parse(body)
