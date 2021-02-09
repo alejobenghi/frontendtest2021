@@ -1,23 +1,24 @@
 import React,{ useState } from 'react'
 import './items.scss';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 
 
-const SearchBar = ({handleSubmit}) => {
+const SearchBar = () => {
 
     const [searchValue, setSearchValue] = useState('')
     const handleChange = (event) => {
-        const { name, value} = event.target
-        setSearchValue({searchValue,[name]:value})
+        setSearchValue(event.target.value)
     }
 
-    const _handleSubmit = (e) => {
-        e.preventDefault()
-        handleSubmit(searchValue)
-    }
+    
     return(
         <div className="searchContainer">
-            <form onSubmit={_handleSubmit}>
                 <input
                     name="search"
                     label="Search And Higlight"
@@ -26,10 +27,11 @@ const SearchBar = ({handleSubmit}) => {
                     onChange={handleChange}
                     color="secondary"
                 />
-                <input 
-                    type="submit"
-                />
-            </form>
+
+                <Route>
+                    <Link to={"/items?q="+searchValue}>Buscar</Link>
+                </Route>
+            
         </div>
     )
 }

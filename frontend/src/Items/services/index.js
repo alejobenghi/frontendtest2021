@@ -4,7 +4,7 @@ export async function getItemsFront(searchText){
     try {
    //     console.log(searchText)
         const response = await axios({
-            url: `${baseUrl}/items?q=${searchText.search}`,
+            url: `${baseUrl}/items?q=${searchText}`,
             method: 'GET'
         })
         console.log(response)

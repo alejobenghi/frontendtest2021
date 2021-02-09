@@ -9,7 +9,7 @@ const ListItems = ({listaItems}) => {
             {
                 listaItems.map(({id,title})=>(
                     <div>
-                    {id}
+                    {id},{title}
                     </div>
                 ))
             }
