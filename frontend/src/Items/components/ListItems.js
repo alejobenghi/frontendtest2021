@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import {Container, Row, Col, Image} from 'react-bootstrap'
+import free from '../../img/ic_shipping.png';
 
 import {
     BrowserRouter as Router,
@@ -25,14 +26,23 @@ const ListItems = ({listaItems}) => {
                 </Row>
             
             {
-                listaItems.map(({id,title,picture,price})=>(
+                listaItems.map(({id,title,picture,price,free_shipping})=>(
                     <Link style={{ textDecoration: 'none' }} to={"/items/"+id}>
                     <Row className="rowResult">
                     <Col xs={6} md={2}>
+                    <div className="contThumbnail">
                     <Image className="thumbnail" src={picture} rounded />
+                    </div>
                      </Col>
                      <Col xs={6} md={8}>
-                        <h3>$  {price.amount}</h3>
+                        <span className="title">{price.amount}</span>
+                        {free_shipping?(
+                            <img className="shipping" src={free} alt="shipping" />
+                        ):(
+                            <div></div>
+                        )
+
+                        }
                         <p>{title}</p>
                     </Col>
                     <Col md={2}>

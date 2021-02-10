@@ -31,12 +31,22 @@ async function getItems(req,res){
             json +='],'
             json +='"items":['
             for(var i=0;i<dim;i++){
+                var currency_id
+                var amount
+                if (typeof data.results[i].prices.prices !== 'undefined') {
+                    currency_id =data.results[i].prices.prices[0].currency_id
+                    amount ="$  " + data.results[i].prices.prices[0].amount
+                }else{
+                    currency_id = ''
+                    amount = ''
+                    
+                }
                 json +='{'
                 json += '"id":'+'"'+data.results[i].id+'",'
                 json += '"title":'+'"'+data.results[i].title+'",'
                 json += '"price":{'
-                json += '"currency":"'+data.results[i].prices.prices[0].currency_id+'",'
-                json += '"amount":'+data.results[i].prices.prices[0].amount+','
+                json += '"currency":"'+currency_id+'",'
+                json += '"amount":"'+amount+'",'
                 json += '"decimals":2'
                 json +='},'
                 json +='"picture":"'+data.results[i].thumbnail+'",'
