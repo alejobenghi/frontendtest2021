@@ -1,38 +1,29 @@
-.App {
-  text-align: center;
+@import "~bootstrap/scss/bootstrap";
+
+body{
+  background-color: #EEEEEE;
+}
+.contBarra{
+    background-color:#FFE600;
+    height: 52px;
+    padding: 9px 0 0 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.conSearch{
+  background-color: #EEEEEE;
+  padding: 7px 12px 7px 12px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.searchField{
+  width: 90%;
+  border: none;
+  height: 35px;
+  padding: 0 0 0 15px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.logo{
+  float: right;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.thumbnail{
+  width: 180px;
+  height: 180px;
 }

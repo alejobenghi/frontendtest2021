@@ -6,7 +6,6 @@ async function getItems(req,res){
         request(url, function(error,response,body){
             var data=JSON.parse(body)
             
-
             var categories = []
             if(data.results.length >=4){
                 dim = 4
@@ -40,10 +39,11 @@ async function getItems(req,res){
                 json += '"amount":'+data.results[i].prices.prices[0].amount+','
                 json += '"decimals":2'
                 json +='},'
-                json +='"picture":"",'
+                json +='"picture":"'+data.results[i].thumbnail+'",'
                 json +='"condition":"",'
                 json +='"free_shipping":'+data.results[i].shipping.free_shipping
                 json +='},'
+                
             }
             if(dim>=1){
                 json = json.slice(0,-1)
@@ -52,13 +52,14 @@ async function getItems(req,res){
             json +='}'
             res.status(200).send(JSON.parse(json))
             //res.status(200).send(data)
-
+            
         })
         
     } catch (e) {
         res.status(500).send({message:e.message})
     }
 }
+
 
 async function getItemById(req,res){
     try {
