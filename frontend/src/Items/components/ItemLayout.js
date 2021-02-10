@@ -1,27 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import './items.scss'
 import SearchBar from './SearchBar'
-import ListItems from './ListItems'
-import {getItemsFront} from '../services'
+import ListItem from './ListItem'
+import {getItemByIdFront} from '../services'
 import {
-    BrowserRouter as Router,
-    Link,
-    useLocation
+    useParams
   } from "react-router-dom";
 
-function useQuery() {
-    return new URLSearchParams(useLocation().search);
-}
-const ItemsLayout = (props) => {
-    const [items, setItems] = useState([])
-    let query = useQuery();
+
+const ItemLayout = (props) => {
+    const [item, setItem] = useState([])
+    let { id } = useParams();
 
 
     useEffect(() => {
         async function getData () {
-          const response = await getItemsFront(query.get('q'))
+          const response = await getItemByIdFront(id)
           if(response.status===200){
-            setItems(response.data.items)
+            setItem(response.data.item)
             }
         };
         getData();
@@ -36,7 +32,7 @@ const ItemsLayout = (props) => {
             <SearchBar />
           
             
-             <ListItems listaItems={items}/>   
+             <ListItem listaItem={item}/>   
             
             
             
@@ -44,4 +40,4 @@ const ItemsLayout = (props) => {
     )
 }
 
-export default ItemsLayout
+export default ItemLayout

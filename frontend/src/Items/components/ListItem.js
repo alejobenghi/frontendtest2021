@@ -1,20 +1,20 @@
 import React,{useState, useEffect} from 'react'
 import {getItemsFront} from '../services'
 
-const ListItems = ({listaItems}) => {
+const ListItem = ({listaItem}) => {
   
 
     return (
         <div>
             {
-                listaItems.map(({id,title})=>(
-                    <div key={id}>
-                    {id},{title}
+                
+                    <div key={listaItem.id}>
+                    {listaItem.id},{listaItem.title}
                     </div>
-                ))
+                
             }
         </div>    
     )
 }
 
-export default ListItems
+export default ListItem
