@@ -17,17 +17,40 @@ const ListItems = ({listaItems}) => {
             <Container>
         
             
+            
+                <Row>
+                    <Col xs={12} md={8}>
+                        <p className="categ">Electronica, Audio y Video &gt; iPod &gt; Reproductores iPod touch &gt; 32 GB</p>
+                     </Col>
+                </Row>
+            
             {
-                
-                listaItems.map(({id,title,picture})=>(
-                    <Link to={"/items/"+id}>
-                    <Row>
-                    <Col xs={6} md={4}>
+                listaItems.map(({id,title,picture,price})=>(
+                    <Link style={{ textDecoration: 'none' }} to={"/items/"+id}>
+                    <Row className="rowResult">
+                    <Col xs={6} md={2}>
                     <Image className="thumbnail" src={picture} rounded />
                      </Col>
-                     <Col xs={6} md={4}>
-                    {id},{title}
+                     <Col xs={6} md={8}>
+                        <h3>$  {price.amount}</h3>
+                        <p>{title}</p>
                     </Col>
+                    <Col md={2}>
+                        
+                        <p className="localidad">Capital Federal</p>
+                    </Col>
+                    </Row>
+                    <Row className="rowLine">
+                        <Col>
+                        <hr  style={{
+                            backgroundColor: '#EEEEEE',
+                            height: 1,
+                            marginLeft: 20,
+                            marginRight: 20,
+                            marginTop: 0,
+                            marginBottom: 0
+                        }}/>
+                        </Col>
                     </Row>
                     </Link>
                 ))

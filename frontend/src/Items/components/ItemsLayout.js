@@ -25,7 +25,7 @@ const ItemsLayout = (props) => {
             }
         };
         getData();
-      }, []);
+      }, [query.get('q')]);
 
 
    
