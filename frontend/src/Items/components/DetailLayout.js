@@ -16,28 +16,26 @@ const DetailLayout = () => {
 
     useEffect(() => {
         async function getData () {
-          const response = await getItemByIdFront(id)
-          if(response.status===200){
-            setItem(response.data.item)
-            setPrice(response.data.item.price)
+            const response = await getItemByIdFront(id)
+            if(response.status===200){
+                setItem(response.data.item)
+                setPrice(response.data.item.price)
             }
-            console.log("prueba "+response.data.item.category_id)
-          const response2 = await getCategoryByIdFront(response.data.item.category_id)
-          if(response2.status===200){
-            setCategory(response2.data)
+            const response2 = await getCategoryByIdFront(response.data.item.category_id)
+            if(response2.status===200){
+                setCategory(response2.data)
             }
         };
         getData();
-      },[]);
+    },[]);
 
 
-      let props = {
+    let props = {
         propItem : item,
         propPrice : price,
         propCategory: category
-      }
+    }
    
-    //console.log(item)
     return (
         <>
             <SearchBar />

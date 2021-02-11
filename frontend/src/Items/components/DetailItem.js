@@ -14,11 +14,11 @@ const DetailItem = (props) => {
             <Row>
                 <Col xs={12} md={8}>
                     <p className="categ">{props.propCategory.name}</p>
-                 </Col>
+                </Col>
             </Row>
         
         
-                <Row className="rowResult">
+            <Row className="rowResult">
                 <Col xs={6} md={8}>
                     <div className="conImage">
                         <Image className="thumbnailDetail" src={props.propItem.picture} rounded />
@@ -32,11 +32,11 @@ const DetailItem = (props) => {
                     <Button className="button" variant="primary">Comprar</Button>
                 </Col>
                
-                </Row>
-                <Row className="rowResult">
+            </Row>
+            <Row className="rowResult">
                 <h3 className="descProd">Descripción del producto</h3>
                 <p className="description">{props.propItem.description}</p>
-                </Row>
+            </Row>
                 
             
             

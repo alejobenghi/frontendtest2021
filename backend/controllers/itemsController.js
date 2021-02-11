@@ -1,17 +1,26 @@
 //const { request } = require("express")
 const request = require('request');
+
+//Consulta API de mercado libre de resultados de busqueda y arma API segun formato solicitado
 async function getItems(req,res){
     try {
         var url = `https://api.mercadolibre.com/sites/MLA/search?q=:${req.query.q}`
         request(url, function(error,response,body){
             var data=JSON.parse(body)
             
-            var categories = []
+            
+
+            //Si la cantidad de resultados de busqueda es mayor a 4 se limita a 4,
+            // sino se muestran la cantidad de resultados original ej: 1, 2 o 3
             if(data.results.length >=4){
                 dim = 4
             }else{
                 dim = data.results.length
             }
+
+            //se arma el array con todas las categorias incluidas en el resultado de busqueda
+            //no se incluyen aquellas que ya se encuentran en el array
+            var categories = []
             for(var i=0;i<dim;i++){
                 if(!categories.includes(data.results[i].category_id)){
                     categories.push(data.results[i].category_id)
@@ -20,15 +29,15 @@ async function getItems(req,res){
             
 
             var json = '{"author":{"name":"Alejo","lastname":"Benedetti Ghiglia"},'
-            json +='   "categories":['
+            json +='   "categories":[{'
             if(categories.length > 0){
                 categories.forEach(element => {
-                    json +='"'+element +'",'
+                    json +='"category_id":"'+element +'",'
                 })
                 json = json.slice(0,-1)
             }
             
-            json +='],'
+            json +='}],'
             json +='"items":['
             for(var i=0;i<dim;i++){
                 var currency_id
@@ -71,8 +80,10 @@ async function getItems(req,res){
 }
 
 
+//Consulta API de mercado libre de detalle de producto y arma API segun formato solicitado
 async function getItemById(req,res){
     try {
+        //en primer lugar consulta api con descripcion del producto
         var url = `https://api.mercadolibre.com/items/${req.params.id}/description`
         request(url, function(error,response,body){
             var data=JSON.parse(body)
@@ -82,6 +93,8 @@ async function getItemById(req,res){
         
             descri = descri.replace(/\r/g,'')
             descri = descri.replace(/"/g,' ')
+            
+            //luego consulta api de detalle de producto
             var url = `https://api.mercadolibre.com/items/${req.params.id}`
             request(url, function(error,response,body){
                 var data=JSON.parse(body)
