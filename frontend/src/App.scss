@@ -43,7 +43,6 @@ body{
     color: #333333;
     font-size: 22px;
     font-weight: 400;
-    width: auto;
     margin: 5px 0 20px 16px;
   }
   p{
@@ -79,11 +78,52 @@ p.localidad{
   margin: 0 0 10px 10px;
 }
 
-.contThumbnailDetail{
-  width: 680px;
-  height: 680px;
-  overflow: hidden;
+.conImage{
+width: 680px;
+text-align: center;
 }
+
 .thumbnailDetail{
+  max-width: 680px;
+}
+
+p.conditionSold{
+  font-size: 14px;
+  color: #333333;
+  margin: 16px 0 0 0;
+}
+p.titleDetail{
+  font-size: 24px;
+  color: #333333;
+  font-weight: 700;
+  margin: 16px 0 32px 0;
+  line-height: normal;
+}
+
+span.price{
+  font-size: 46px;
+  color: #333333;
+  font-weight: 500;
+  vertical-align: -webkit-baseline-middle;
+}
+span.decimals{
+ vertical-align: text-bottom;
+}
+
+.button{
+  width: 100%;
+  margin: 32px 0 0 0;
+}
+h3.descProd{
+  font-size: 28px;
+  color: #666666;
+  font-weight: 400;
+  margin: 0 0 0 32px;
+  width: 680px;
+}
+p.description{
+  font-size: 16px;
+  color: #666666;
+  margin: 32px 0 32px 32px;
   width: 680px;
 }

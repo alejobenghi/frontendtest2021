@@ -47,7 +47,7 @@ async function getItems(req,res){
                 json += '"price":{'
                 json += '"currency":"'+currency_id+'",'
                 json += '"amount":"'+amount+'",'
-                json += '"decimals":2'
+                json += '"decimals":"00"'
                 json +='},'
                 json +='"picture":"'+data.results[i].thumbnail+'",'
                 json +='"condition":"",'
@@ -78,26 +78,34 @@ async function getItemById(req,res){
             var data=JSON.parse(body)
             var descri = data.plain_text
             descri = descri.replace(/\n/g,' ')
+            descri = descri.replace(/º/g,'')
         
+            descri = descri.replace(/\r/g,'')
             descri = descri.replace(/"/g,' ')
             var url = `https://api.mercadolibre.com/items/${req.params.id}`
             request(url, function(error,response,body){
                 var data=JSON.parse(body)
-                
-
+                var condition
+                if(data.condition==="new"){
+                    condition = "Nuevo"
+                }else{
+                    condition = "Usado"
+                }
             
+               
                 var json = '{"author":{"name":"Alejo","lastname":"Benedetti Ghiglia"},'
             
                 json +='"item":{'
                     json += '"id":'+'"'+data.id+'",'
                     json += '"title":'+'"'+data.title+'",'
+                    json += '"category_id":'+'"'+data.category_id+'",'
                     json += '"price":{'
                     json += '"currency":"'+data.currency_id+'",'
-                    json += '"amount":'+data.price+','
-                    json += '"decimals":2'
+                    json += '"amount":"'+data.price.toLocaleString()+'",'
+                    json += '"decimals":"00"'
                     json +='},'
                     json +='"picture":"'+data.pictures[0].url+'",'
-                    json +='"condition":"",'
+                    json +='"condition":"'+condition+'",'
                     json +='"free_shipping":'+data.shipping.free_shipping+','
                     json += '"sold_quantity":'+data.sold_quantity+','
                     json += '"description":"'+ descri+'"'

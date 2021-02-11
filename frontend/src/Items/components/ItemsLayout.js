@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import './items.scss'
 import SearchBar from './SearchBar'
 import ListItems from './ListItems'
 import {getItemsFront} from '../services'
