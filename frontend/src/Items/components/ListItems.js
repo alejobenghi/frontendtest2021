@@ -20,10 +20,11 @@ const ListItems = (props) => {
     return (
         
         <Route>
-            <Container>
             
                 <Row>
-                    <Col xs={12} md={8}>
+                    <Col md={1}>
+                    </Col>
+                    <Col xs={12} md={10}>
                         <p className="categ">
                            &nbsp;
                             {
@@ -33,18 +34,22 @@ const ListItems = (props) => {
                             
                         </p>
                     </Col>
+                    <Col md={1}>
+                    </Col>
                 </Row>
             
                 {
                 props.propItems.map(({id,title,picture,price,free_shipping})=>(
                     <Link key={id} style={{ textDecoration: 'none' }} to={"/items/"+id}>
-                        <Row className="rowResult">
-                            <Col xs={6} md={2}>
+                        <Row >
+                            <Col md={1}>
+                            </Col>
+                            <Col className="rowResult" style={{paddingTop:16}} xs={6} md={2}>
                                 <div className="contThumbnail">
                                     <Image className="thumbnail" src={picture} rounded />
                                 </div>
                             </Col>
-                            <Col xs={6} md={8}>
+                            <Col className="rowResult"  style={{paddingTop:32}} xs={6} md={6}>
                                 <span className="title">{price.amount}</span>
                                 {free_shipping?(
                                     <img className="shipping" src={free} alt="shipping" />
@@ -55,12 +60,16 @@ const ListItems = (props) => {
                                 }
                                 <p>{title}</p>
                             </Col>
-                            <Col md={2}>
+                            <Col className="rowResult"  style={{paddingTop:16}} md={2} >
                                 <p className="localidad">Capital Federal</p>
                             </Col>
+                            <Col md={1}>
+                            </Col>
                         </Row>
-                        <Row className="rowLine">
-                            <Col>
+                        <Row >
+                            <Col md={1}>
+                            </Col>
+                            <Col className="rowResult">
                                 <hr  style={{
                                     backgroundColor: '#EEEEEE',
                                     height: 1,
@@ -70,12 +79,13 @@ const ListItems = (props) => {
                                     marginBottom: 0
                                 }}/>
                             </Col>
+                            <Col md={1}>
+                            </Col>
                         </Row>
                     </Link>
                 ))
                 
             }
-            </Container>
         </Route>
             
             

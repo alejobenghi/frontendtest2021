@@ -17,7 +17,7 @@ body{
 }
 
 .searchField{
-  width: 90%;
+  width: 85%;
   border: none;
   height: 35px;
   padding: 0 0 0 15px;
@@ -30,6 +30,7 @@ body{
 .contThumbnail{
   width: 180px;
   height: 180px;
+  margin: 0 16px 16px 16px;
   overflow: hidden;
 }
 .thumbnail{
@@ -37,7 +38,6 @@ body{
 }
 
 .rowResult{
-  padding: 16px;
   background-color: #FFFFFF;
   .title{
     color: #333333;
@@ -81,6 +81,7 @@ p.localidad{
 .conImage{
 width: 680px;
 text-align: center;
+margin: 16px 0 0 16px;
 }
 
 .thumbnailDetail{
@@ -90,7 +91,7 @@ text-align: center;
 p.conditionSold{
   font-size: 14px;
   color: #333333;
-  margin: 16px 0 0 0;
+  margin: 32px 0 0 0;
 }
 p.titleDetail{
   font-size: 24px;
@@ -118,12 +119,12 @@ h3.descProd{
   font-size: 28px;
   color: #666666;
   font-weight: 400;
-  margin: 0 0 0 32px;
-  width: 680px;
+  margin: 32px 0 0 32px;
+  width: 65%;
 }
 p.description{
   font-size: 16px;
   color: #666666;
   margin: 32px 0 32px 32px;
-  width: 680px;
+  width: 65%;
 }
